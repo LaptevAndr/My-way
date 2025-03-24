@@ -22,9 +22,7 @@ if __name__ == "__main__":
 
     # Инициализация View
     view = KioskView()
-
     # Инициализация Controller
     controller = KioskController(inventory_model, order_model, view)
-
     # Запуск приложения
     controller.run()

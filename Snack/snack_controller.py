@@ -55,7 +55,6 @@ class KioskController:
             total_price = sum([hd.calculate_price() for hd in hot_dogs])
             discount = self.order_model.apply_discount(len(hot_dogs), total_price)
             final_price = total_price - discount
-
             # Сохраняем заказ
             order_data = {
                 "hot_dogs": [str(hd) for hd in hot_dogs],
