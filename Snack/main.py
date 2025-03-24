@@ -1,0 +1,30 @@
+from snack_controller import KioskController
+from snack_model import InventoryModel, Bun, Sausage, Sauce, Topping, BulkDiscount, OrderModel  # Импортируем классы из модели
+from snack_view import KioskView
+if __name__ == "__main__":
+    # Инициализация моделей
+    inventory_model = InventoryModel()
+
+    # Пример добавления ингредиентов, если inventory.json пуст
+    if not inventory_model.inventory["buns"]:
+        inventory_model.inventory["buns"]["обычная"] = Bun("обычная", 100, 5)  # Название, количество, цена
+    if not inventory_model.inventory["sausages"]:
+        inventory_model.inventory["sausages"]["говяжья"] = Sausage("говяжья", 50, 20)
+    if not inventory_model.inventory["sauces"]:
+        inventory_model.inventory["sauces"]["кетчуп"] = Sauce("кетчуп", 50, 3)
+    if not inventory_model.inventory["toppings"]:
+        inventory_model.inventory["toppings"]["лук"] = Topping("лук", 50, 2)
+
+    inventory_model.save_inventory() # Сохраняем изменения
+
+    bulk_discount = BulkDiscount(threshold=3, discount_percentage=10)
+    order_model = OrderModel(discount_strategy=bulk_discount)
+
+    # Инициализация View
+    view = KioskView()
+
+    # Инициализация Controller
+    controller = KioskController(inventory_model, order_model, view)
+
+    # Запуск приложения
+    controller.run()
