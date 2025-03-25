@@ -51,26 +51,47 @@ class Recipe(abc.ABC):  # Интерфейс для рецептов
     @abc.abstractmethod
     def create_hot_dog(self):
         pass
-
 class StandardHotDog(Recipe):
     def __init__(self, bun, sausage, sauces, toppings):
         self.bun = bun
         self.sausage = sausage
         self.sauces = sauces
         self.toppings = toppings
+    def create_hot_dog(self):
+         return HotDog(self.bun, self.sausage, self.sauces, self.toppings)
+#Исправлен!
+class ClassicHotDogRecipe(Recipe):
+    def __init__(self, bun, sausage, ketchup, mustard):
+        self.bun = bun
+        self.sausage = sausage
+        self.ketchup = ketchup
+        self.mustard = mustard
 
     def create_hot_dog(self):
-        return HotDog(self.bun, self.sausage, self.sauces, self.toppings)
+      # Создаем список соусов
+        sauces = [self.ketchup, self.mustard]
 
+        # Создаем объект HotDog с булочкой, сосиской и соусами
+        hot_dog = HotDog(self.bun, self.sausage, sauces=sauces)
+        return hot_dog
+    
+class SpicyHotDogRecipe(Recipe):
+    def __init__(self, bun, sausage, spicy_sauce, jalapenos):
+        self.bun = bun
+        self.sausage = sausage
+        self.spicy_sauce = spicy_sauce
+        self.jalapenos = jalapenos
+
+    def create_hot_dog(self):
+        return HotDog(self.bun, self.sausage, sauces=[self.spicy_sauce], toppings=[self.jalapenos])
 class CustomHotDog(Recipe):
     def __init__(self, bun, sausage, sauces, toppings):
         self.bun = bun
         self.sausage = sausage
         self.sauces = sauces
         self.toppings = toppings
-
     def create_hot_dog(self):
-        return HotDog(self.bun, self.sausage, self.sauces, self.toppings)
+         return HotDog(self.bun, self.sausage, self.sauces, self.toppings)
 
 class PaymentType(Enum):
     CASH = "Наличные"
