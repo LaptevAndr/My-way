@@ -1,0 +1,26 @@
+{
+    "buns": {
+        "\u043e\u0431\u044b\u0447\u043d\u0430\u044f": {
+            "quantity": 100,
+            "cost_per_unit": 5
+        }
+    },
+    "sausages": {
+        "\u0433\u043e\u0432\u044f\u0436\u044c\u044f": {
+            "quantity": 50,
+            "cost_per_unit": 20
+        }
+    },
+    "sauces": {
+        "\u043a\u0435\u0442\u0447\u0443\u043f": {
+            "quantity": 50,
+            "cost_per_unit": 3
+        }
+    },
+    "toppings": {
+        "\u043b\u0443\u043a": {
+            "quantity": 50,
+            "cost_per_unit": 2
+        }
+    }
+}
