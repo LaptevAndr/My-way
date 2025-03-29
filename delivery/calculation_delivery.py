@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 class CalculationDelivery(ABC):
     @abstractmethod
     def deliver_calculation(self, calculation: float) -> float:
-        """Calculates the total cost with delivery."""
+        """Рассчитывает общую стоимость с доставкой."""
         pass
 
 class RegularDelivery(CalculationDelivery):
@@ -27,7 +27,6 @@ class Order:
         return self.calculation_delivery.deliver_calculation(self.calculation)
 
 # Test
-
 regular_delivery = RegularDelivery()
 express_delivery = ExpressDelivery()
 pickup_delivery = Pickup()
