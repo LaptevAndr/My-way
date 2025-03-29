@@ -71,10 +71,28 @@ class ClassicHotDogRecipe(Recipe):
       # Создаем список соусов
         sauces = [self.ketchup, self.mustard]
 
+<<<<<<< HEAD
         # Создаем объект HotDog с булочкой, сосиской и соусами
         hot_dog = HotDog(self.bun, self.sausage, sauces=sauces)
         return hot_dog
     
+=======
+class ClassicHotDogRecipe(Recipe):
+    def __init__(self, bun, sausage, ketchup, mustard):
+        self.bun = bun
+        self.sausage = sausage
+        self.ketchup = ketchup
+        self.mustard = mustard
+
+    def create_hot_dog(self):
+      # Создаем список соусов
+        sauces = [self.ketchup, self.mustard]
+
+        # Создаем объект HotDog с булочкой, сосиской и соусами
+        hot_dog = HotDog(self.bun, self.sausage, sauces=sauces)
+        return hot_dog
+
+>>>>>>> d03dbfce78737c8e41d8d95e420c30dfbaf1df3c
 class SpicyHotDogRecipe(Recipe):
     def __init__(self, bun, sausage, spicy_sauce, jalapenos):
         self.bun = bun
@@ -84,6 +102,10 @@ class SpicyHotDogRecipe(Recipe):
 
     def create_hot_dog(self):
         return HotDog(self.bun, self.sausage, sauces=[self.spicy_sauce], toppings=[self.jalapenos])
+<<<<<<< HEAD
+=======
+
+>>>>>>> d03dbfce78737c8e41d8d95e420c30dfbaf1df3c
 class CustomHotDog(Recipe):
     def __init__(self, bun, sausage, sauces, toppings):
         self.bun = bun
@@ -96,7 +118,7 @@ class CustomHotDog(Recipe):
 class PaymentType(Enum):
     CASH = "Наличные"
     CARD = "Карта"
-    
+
 class InventoryModel:  # Управление данными инвентаря
     def __init__(self, inventory_file="inventory.json"):
         self.inventory_file = inventory_file
@@ -229,4 +251,3 @@ class BulkDiscount(DiscountStrategy):
         if quantity >= self.threshold:
             return total_price * (self.discount_percentage / 100)
         return 0.0
-
