@@ -1,13 +1,11 @@
 from snack_controller import KioskController
 from snack_model import InventoryModel, Bun, Sausage, Sauce, Topping, BulkDiscount, OrderModel
 from snack_view import KioskView
-import os
-
-print(f"Текущая рабочая директория: {os.getcwd()}")
 
 if __name__ == "__main__":
     # Инициализация моделей
     inventory_model = InventoryModel()
+
 
     if not inventory_model.inventory["buns"]:
         inventory_model.inventory["buns"]["обычная"] = Bun("обычная", 100, 5)
